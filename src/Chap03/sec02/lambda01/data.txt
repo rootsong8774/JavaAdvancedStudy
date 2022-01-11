@@ -1,0 +1,5 @@
+Java
+Apple
+Lambdas
+File
+Execute
