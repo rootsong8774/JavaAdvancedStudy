@@ -8,5 +8,18 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="javafx-swt" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://D:/Downloads/라이브러리및에디터/javafx-sdk-11.0.1/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://D:/Downloads/라이브러리및에디터/javafx-sdk-11.0.1/lib" />
+        </SOURCES>
+        <jarDirectory url="file://D:/Downloads/라이브러리및에디터/javafx-sdk-11.0.1/lib" recursive="false" />
+        <jarDirectory url="file://D:/Downloads/라이브러리및에디터/javafx-sdk-11.0.1/lib" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
   </component>
 </module>

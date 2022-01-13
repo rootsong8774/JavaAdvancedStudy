@@ -18,7 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-public class MainView extends Application {
+public class MainView3 extends Application {
 
     /**
      * 사각형을 움직이도록 하기 위한 쓰레드 객체 - 전역변수 설정 이유 ‣ 버튼1에서 객체생성 ‣ 버튼2, 버튼3에서 객체를 불러와 실행을 해야 한다. ☞ 버튼1, 버튼2,
@@ -74,16 +74,16 @@ public class MainView extends Application {
         stage.show();
 
         /** 쓰레드1 - 윈도우 타이틀에 시간정보 나타내기 */
-        Service service = new Service() {
+        Service<String> service = new Service<>() {
             @Override
-            protected Task createTask() {
-                return new Task<String>() {
+            protected Task<String> createTask() {
+                return new Task<>() {
                     @Override
-                    protected String call() {
+                    protected synchronized String call() {
                         while (true) {
                             /** 1초마다 시간정보를 받아 updateValue() 함수에 저장 */
                             try {
-                                Thread.sleep(1000);
+                                wait(1000);
                             } catch (InterruptedException e) {
                                 break;
                             }
@@ -93,6 +93,7 @@ public class MainView extends Application {
                         }
                         return null;
                     }
+
                 };
             }
         };
@@ -197,7 +198,7 @@ public class MainView extends Application {
                     });
                 }
             });
-            MainView.this.thread = thread;
+            MainView3.this.thread = thread;
             thread.start();
         });
 
@@ -229,6 +230,11 @@ public class MainView extends Application {
             thread.setName("destory-thread-now");
             thread.interrupt();
         });
+    }
+
+    public static void main(String[] args) {
+
+        Application.launch(MainView3.class);
     }
 
 

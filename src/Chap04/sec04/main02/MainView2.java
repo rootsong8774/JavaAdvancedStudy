@@ -22,7 +22,7 @@ public class MainView2 extends Application {
 
         Task<String> task = new Task<>() {
             @Override
-            protected String call() {
+            protected synchronized String call() {
                 while (true) {
 
                     try {
@@ -31,7 +31,7 @@ public class MainView2 extends Application {
 
                             updateValue(time.toString());
                         });
-                        Thread.sleep(1000);
+                        wait(1000);
                     } catch (InterruptedException e) {
                         break;
                     }
@@ -44,5 +44,9 @@ public class MainView2 extends Application {
 
         new Thread(task).start();
         stage.titleProperty().bind(task.valueProperty());
+    }
+
+    public static void main(String[] args) {
+        Application.launch(MainView2.class);
     }
 }

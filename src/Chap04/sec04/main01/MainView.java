@@ -46,10 +46,10 @@ public class MainView extends Application {
         }
 
         @Override
-        public void run() {
+        public synchronized void run() {
             while (true) {
                 try {
-                    Thread.sleep(1000);
+                    wait(1000);
                 } catch (InterruptedException e) {
                     break;
                 }
@@ -87,6 +87,10 @@ public class MainView extends Application {
 
             }
         }
+    }
+
+    public static void main(String[] args) {
+        Application.launch(MainView.class);
     }
 
 
